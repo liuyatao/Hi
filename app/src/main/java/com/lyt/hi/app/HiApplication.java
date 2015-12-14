@@ -32,7 +32,7 @@ public class HiApplication extends Application {
         hiApplication=new HiApplication();
         Bmob.initialize(this,"4cf735bb4c16f7154c215d8cc8439fc2");
     }
-    public HiApplication getInstance(){
+    public static HiApplication getInstance(){
         return hiApplication;
     }
 }

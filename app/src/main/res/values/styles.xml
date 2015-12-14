@@ -27,4 +27,45 @@
         <!--<item name="android:background">#4CAF50</item>-->
     </style>
 
+    <style name="profile_setting_item">
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:layout_marginBottom">3dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="profile_setting_item_title">
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textcolor</item>
+        <item name="android:text">这是一个标题</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="profile_setting_item_image">
+        <item name="android:id">@id/card_setting_image</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:src">@drawable/setting_view_arrow</item>
+    </style>
+
+    <style name="profile_setting_item_value">
+        <item name="android:layout_toLeftOf">@id/card_setting_image</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">end|center_vertical</item>
+    </style>
+
+
+
+
 </resources>

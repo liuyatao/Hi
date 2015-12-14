@@ -6,7 +6,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.lyt.hi.R;
 import com.lyt.hi.adapter.HiViewPagerAdapter;
 import com.lyt.hi.fragment.ExploreFragment;
@@ -27,6 +32,15 @@ public class MainActivity extends AppCompatActivity {
     ViewPager hiViewpager;
     @Bind(R.id.hi_tablayout)
     TabLayout hiTablayout;
+    /**
+     * 定位客户端
+     */
+    AMapLocationClient locationClient;
+    /**
+     * 定位结果监听
+     */
+    AMapLocationListener aMapLocationListener;
+    AMapLocationClientOption aMapLocationClientOption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +49,31 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initUI();
 
+        getLocation();
+
+    }
+
+    /**
+     * 获取定位结果
+     */
+    private void getLocation() {
+        locationClient=new AMapLocationClient(getApplicationContext());
+
+        aMapLocationClientOption=new AMapLocationClientOption();
+        aMapLocationClientOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+        aMapLocationClientOption.setOnceLocation(true);
+        aMapLocationClientOption.setMockEnable(true);
+
+        locationClient.setLocationOption(aMapLocationClientOption);
+        aMapLocationListener=new AMapLocationListener() {
+            @Override
+            public void onLocationChanged(AMapLocation aMapLocation) {
+                Log.e("getLocation","纬度为："+aMapLocation.getLatitude()+"精度为："+aMapLocation.getLongitude()+"地址为："+aMapLocation.getAddress());
+
+            }
+        };
+        locationClient.setLocationListener(aMapLocationListener);
+        locationClient.startLocation();
     }
 
     private void initUI() {
@@ -56,4 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
         hiTablayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(hiViewpager));
     }
+
+
 }
