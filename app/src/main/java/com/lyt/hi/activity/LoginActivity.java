@@ -17,6 +17,7 @@ import com.lyt.hi.view.ClearableEditText;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
 
@@ -43,7 +44,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         initUI();
-        if (null!=BmobUser.getCurrentUser(this)){
+        HiUser hiUser=BmobUser.getCurrentUser(this,HiUser.class);
+        if (null!=hiUser){
             Intent intent=new Intent(this,MainActivity.class);
             startActivity(intent);
             finish();
@@ -76,18 +78,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void dologin() {
         final ProgressDialog progressDialog = new ProgressDialog(this, R.style.AppTheme_Dialog);
         progressDialog.show();
-        HiUser hiUser = new HiUser();
+        final HiUser hiUser = new HiUser();
         hiUser.setUsername(loginUserEdit.getText().toString());
         hiUser.setPassword(loginPwdEdit.getText().toString());
-        HiApplication.getInstance().setHiUser(hiUser);
+        HiApplication hiApplication= (HiApplication) getApplicationContext();
+        hiApplication.setHiUser(hiUser);
 
 
         hiUser.login(this, new SaveListener() {
             @Override
             public void onSuccess() {
                 progressDialog.dismiss();
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent;
+                if (hiUser.isSet()){
+                     intent = new Intent(LoginActivity.this, MainActivity.class);
+                }else {
+                     intent=new Intent(LoginActivity.this,ProfileSettingActivity.class);
+                }
+
                 startActivity(intent);
+
                 LoginActivity.this.finish();
             }
 

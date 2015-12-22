@@ -14,7 +14,7 @@ public class HiUser extends BmobUser {
     /**
      * 头像
      */
-    private String headImageUrl;
+    private HeadImage headImage;
     /**
      * 恋爱状况 单身/恋爱中/已婚
      */
@@ -29,6 +29,19 @@ public class HiUser extends BmobUser {
      */
     private BmobGeoPoint location;
 
+    /**
+     * 是否进行了个人信息设置
+     */
+    private boolean set=false;
+
+    public boolean isSet() {
+        return set;
+    }
+
+    public void setSet(boolean set) {
+        this.set = set;
+    }
+
     public String getSex() {
         return Sex;
     }
@@ -37,12 +50,12 @@ public class HiUser extends BmobUser {
         Sex = sex;
     }
 
-    public String getHeadImageUrl() {
-        return headImageUrl;
+    public HeadImage getHeadImage() {
+        return headImage;
     }
 
-    public void setHeadImageUrl(String headImageUrl) {
-        this.headImageUrl = headImageUrl;
+    public void setHeadImage(HeadImage headImage) {
+        this.headImage = headImage;
     }
 
     public String getAffairStates() {

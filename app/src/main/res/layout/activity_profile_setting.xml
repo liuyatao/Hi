@@ -23,15 +23,21 @@
                 android:layout_height="200dp">
 
                 <com.github.siyamed.shapeimageview.CircularImageView
+                    android:id="@+id/headImage"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ff"
+
                     app:siBorderColor="@color/grey"
                     app:siBorderWidth="3dp" />
             </FrameLayout>
 
             <LinearLayout
+
+                android:divider="@drawable/divider"
+                android:dividerPadding="10dp"
+                android:showDividers="middle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">

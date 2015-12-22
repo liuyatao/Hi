@@ -58,17 +58,25 @@
 
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/AppTheme.NoBar" />
-        <activity android:name=".activity.LoginActivity">
+            android:theme="@style/AppTheme.NoBar" >
 
         </activity>
-        <activity android:name=".activity.ProfileSettingActivity">
+
+
+        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity android:name=".activity.ProfileSettingActivity">
+
+        </activity>
+
+        <!--照片选择-->
+        <activity android:name="me.iwf.photopicker.PhotoPickerActivity" />
     </application>
 
 </manifest>

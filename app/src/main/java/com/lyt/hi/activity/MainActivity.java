@@ -57,23 +57,7 @@ public class MainActivity extends AppCompatActivity {
      * 获取定位结果
      */
     private void getLocation() {
-        locationClient=new AMapLocationClient(getApplicationContext());
 
-        aMapLocationClientOption=new AMapLocationClientOption();
-        aMapLocationClientOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-        aMapLocationClientOption.setOnceLocation(true);
-        aMapLocationClientOption.setMockEnable(true);
-
-        locationClient.setLocationOption(aMapLocationClientOption);
-        aMapLocationListener=new AMapLocationListener() {
-            @Override
-            public void onLocationChanged(AMapLocation aMapLocation) {
-                Log.e("getLocation","纬度为："+aMapLocation.getLatitude()+"精度为："+aMapLocation.getLongitude()+"地址为："+aMapLocation.getAddress());
-
-            }
-        };
-        locationClient.setLocationListener(aMapLocationListener);
-        locationClient.startLocation();
     }
 
     private void initUI() {
